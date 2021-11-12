@@ -30,8 +30,11 @@ jobs:
     steps:
       - name: Install ALSA dev
         run: |
-          sudo apt-get update
-          sudo apt-get install libasound2-dev
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            sudo apt-get update
+            sudo apt-get install libasound2-dev
+          fi
+        shell: bash
       - name: Install rust
         uses: actions-rs/toolchain@v1
         with:
