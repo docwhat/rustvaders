@@ -14,6 +14,7 @@ fn queue_write_to(stdout: &mut Stdout, x: usize, y: usize, s: &str) {
     print!("{}", s);
 }
 
+#[allow(clippy::ptr_arg)]
 pub fn clear_and_render(stdout: &mut Stdout, curr_frame: &Frame) {
     stdout.queue(SetBackgroundColor(Color::Blue)).unwrap();
     stdout.queue(Clear(ClearType::All)).unwrap();
@@ -27,6 +28,7 @@ pub fn clear_and_render(stdout: &mut Stdout, curr_frame: &Frame) {
     stdout.flush().unwrap();
 }
 
+#[allow(clippy::ptr_arg)]
 pub fn render(stdout: &mut Stdout, last_frame: &Frame, curr_frame: &Frame) {
     for (x, col) in curr_frame.iter().enumerate() {
         for (y, &s) in col.iter().enumerate() {
