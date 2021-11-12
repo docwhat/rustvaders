@@ -1,0 +1,53 @@
+name: Build-Test
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Build-Test
+    needs: [release-build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Done
+        run: exit 0
+
+  release-build:
+    name: Release Build
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        rust: [stable]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Install ALSA dev
+        run: |
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            sudo apt-get update
+            sudo apt-get install libasound2-dev
+          fi
+        shell: bash
+      - name: Install rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+          components: clippy
+      - name: Cache Builds
+        uses: Swatinem/rust-cache@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Clippy no features
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release
