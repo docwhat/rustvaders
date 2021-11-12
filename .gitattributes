@@ -1,0 +1,6 @@
+*.rs text
+*.toml text
+*.lock text
+*.yaml text
+LICENSE text
+*.wav filter=lfs diff=lfs merge=lfs -text

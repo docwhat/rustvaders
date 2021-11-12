@@ -5,6 +5,11 @@ on:
     branches: [main]
   push:
     branches: [main]
+    paths-ignore:
+      - ".gitignore"
+      - ".gitattributes"
+      - "**/*.md"
+      - "**/*.wav"
 
 concurrency:
   group: lint-${{ github.ref }}
