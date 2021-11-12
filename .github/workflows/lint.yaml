@@ -28,6 +28,10 @@ jobs:
         rust: [stable]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Install ALSA dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install libasound2-dev
       - name: Install rust
         uses: actions-rs/toolchain@v1
         with:
