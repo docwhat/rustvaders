@@ -40,13 +40,11 @@ jobs:
         with:
           profile: minimal
           toolchain: ${{ matrix.rust }}
-          override: true
-          components: clippy
       - name: Cache Builds
         uses: Swatinem/rust-cache@v1
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Clippy no features
+      - name: Build Release
         uses: actions-rs/cargo@v1
         with:
           command: build
