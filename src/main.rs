@@ -11,7 +11,7 @@ use crossterm::{
     terminal::{self, EnterAlternateScreen, LeaveAlternateScreen},
     ExecutableCommand,
 };
-use invaders::{
+use rustvaders::{
     frame::{new_frame, Drawable, Frame},
     invader::Invaders,
     player::Player,
