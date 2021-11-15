@@ -1,5 +1,5 @@
 [package]
-edition = "2021"
+edition = "2018"
 name = "rustvaders"
 version = "1.0.0"
 
