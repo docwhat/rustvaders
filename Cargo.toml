@@ -8,5 +8,5 @@ version = "1.0.0"
 [dependencies]
 crossbeam = "~0.8"
 crossterm = "~0.23"
-rusty_audio = "^1.2"
+rusty_audio = "^1.4"
 rusty_time = "~0.11"
