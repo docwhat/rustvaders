@@ -48,7 +48,7 @@ jobs:
           override: true
           components: clippy
       - name: Cache Builds
-        uses: Swatinem/rust-cache@v1
+        uses: Swatinem/rust-cache@v2
       - name: Checkout
         uses: actions/checkout@v2
       - name: Clippy no features
