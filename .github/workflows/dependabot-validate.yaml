@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: marocchino/validate-dependabot@v1
+      - uses: marocchino/validate-dependabot@v2
         id: validate
         with:
           path: ".github/dependabot.yaml"
